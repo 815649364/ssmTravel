@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper标签:配置各类映射 namespace：名称空间，由于映射文件有多个，为了防止crud语句的唯一标识被重复，可以设置空间名称。 -->
+<mapper namespace="com.itheima.Mapper.RouteMapper">
+    <select id="getPopularityRouteList" resultType="Route">
+
+    select * from route where rflag='1' order by count desc limit 0,4;
+
+</select>
+
+    <select id="getNewestRouteList" resultType="Route">
+         select * from route where rflag='1' order by rdate desc limit 0,4;
+    </select>
+    
+    <select id="getThemeRouteList" resultType="Route">
+         select * from route where rflag='1' and isthemetour='1' order by rdate desc limit 0,4;
+    </select>
+</mapper>
