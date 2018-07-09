@@ -1,7 +1,10 @@
 package com.itheima.ServiceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.itheima.Mapper.RouteMapper;
 import com.itheima.Service.IRouteService;
+import com.itheima.pojo.PageBean;
 import com.itheima.pojo.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,7 @@ import java.util.Map;
 public class RouteServiceImpl implements IRouteService {
     @Autowired
     private RouteMapper routeMapper;
+
     @Override
     public Map<String, List<Route>> routeCareChoose() {
         //定义集合
@@ -34,9 +38,38 @@ public class RouteServiceImpl implements IRouteService {
         //主题路线
         List<Route> themeRouteList = routeMapper.getThemeRouteList();
         //将数据存入map集合中
-        map.put("popularityRouteList",popularityRouteList);
-        map.put("newestRouteList",newestRouteList);
-        map.put("themeRouteList",themeRouteList);
+        map.put("popularity",popularityRouteList);
+        map.put("news",newestRouteList);
+        map.put("themes",themeRouteList);
         return map;
+    }
+
+
+
+
+    @Override
+    public PageBean getPageBean(int cid, int curPage, String rname) {
+        //封装分页类数据
+        PageBean<Route> pageBean = new PageBean<Route>();
+
+        PageHelper.startPage(curPage,3);
+        List<Route> routeList = routeMapper.findRouteListByCidAndRname(cid, rname);
+        PageInfo<Route> routePageInfo = new PageInfo<>(routeList);
+
+        //封装当前页
+        pageBean.setCurPage(curPage);
+        //封装页容量
+        pageBean.setPageSize(3);
+        //封装页内数据
+        pageBean.setData(routePageInfo.getList());
+        //封装总条目数
+        pageBean.setCount((int) routePageInfo.getTotal());
+        //返回分页类数据
+        return pageBean;
+    }
+
+    @Override
+    public Route findRouteByRid(String rid){
+        return  routeMapper.findRouteByRid(rid);
     }
 }

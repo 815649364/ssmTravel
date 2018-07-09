@@ -117,8 +117,8 @@
         $(function () {
             //发送异步请求,获取旅游线路数据
             $.post(
-                "route",//routeServlet
-                {action:"findRouteByRid",rid:rid},
+                "/findRouteByRid",//routeServlet
+                {rid:rid},
                 function(resultInfo){
                     if(resultInfo.flag){
                         //正常获取结果route
@@ -186,8 +186,8 @@
         $(function () {
             /*异步提交请求判断当前线路是否被收藏*/
             $.post(
-                "favorite",
-                {action:"isFavoriteByRid",rid:rid},
+                "/FavoriteByRid",
+                {rid:rid},
                 function (resultInfo) {
                     if(resultInfo.flag){
                         //判断是否收藏
@@ -209,8 +209,8 @@
         function addFavorite() {
             //发送异步请求添加收藏并返回最新的收藏数量
             $.post(
-                "favorite",
-                {action:"addFavorite",rid:rid},
+                "addFavorite",
+                {rid:rid},
                 function (resultInfo) {
                     if(resultInfo.flag){
                         //判断收藏数量是否>0

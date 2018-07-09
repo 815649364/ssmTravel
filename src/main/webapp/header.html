@@ -7,7 +7,6 @@
 
         $.post(
             "/getLoginUserData",
-            {action:"getLoginUserData"},//请求方法
             function (resultInfo) {
                 if(resultInfo.flag){
                     //已登录
@@ -92,7 +91,7 @@
                 }
             };
             var type="json";
-            $.post(url,data,callback,type);
+            $.post(url,callback,type);
 
 
             //获取url上的rname,更新到搜索输入框里面

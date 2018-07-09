@@ -364,8 +364,7 @@
     <script type="text/javascript">
         //提交异步请求获取黑马精选数据（人气、最新、主题）
         $.post(
-            "route.json",//Servlet地址
-            {action:"routeCareChoose"},
+            "/routeCareChoose",//Servlet地址
             function (resulteInfo) {
                 if(resulteInfo.flag){
                     //正常获取数据

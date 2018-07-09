@@ -1,14 +1,7 @@
 package com.itheima.Service;
 
-import com.itheima.Exception.UserExistsException;
-import com.itheima.Exception.UserNameNotNullException;
-import com.itheima.Mapper.UserMapper;
 import com.itheima.pojo.User;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * FileName: IUserService

@@ -1,7 +1,10 @@
 package com.itheima.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Transient;
 
 /**
  * FileName: User
@@ -14,7 +17,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class User {
 
-    private int uid;//用户id
+    @Id
+    @Transient
+    private Integer uid;//用户id
     private String username;//用户名，账号
     @JsonIgnore
     private String password;//密码

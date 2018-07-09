@@ -21,8 +21,8 @@
             var rname =decodeURI(getParameter("rname"))=="null"?"":decodeURI(getParameter("rname")) ;
             //异步发送请求获取国内游分页数据
             $.post(
-                "route",
-                {action:"findRouteListByCid",cid:cid,curPage:curPage,rname:rname},
+                "/findRouteListByCid",
+                {cid:cid,curPage:curPage,rname:rname},
                 function (resultInfo) {
                     if(resultInfo.flag){
                         //正常获取数据

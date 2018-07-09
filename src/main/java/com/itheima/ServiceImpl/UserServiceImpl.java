@@ -10,8 +10,6 @@ import com.itheima.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * FileName: UserServiceImpl
  * Author:   李志
@@ -49,7 +47,7 @@ public class UserServiceImpl implements IUserService {
         //注册用户添加用户
         int addUser = userMapper.addUser(user);
         //发送邮件
-        MailUtil.sendMail(user.getEmail(),"<a href='http://localhost:8080/travel/user?action=active&code="+user.getCode()+"'>用户激活</a>");
+        MailUtil.sendMail(user.getEmail(),"<a href='http://localhost:8080/active?code="+user.getCode()+"'>用户激活</a>");
         return true;
     }
 

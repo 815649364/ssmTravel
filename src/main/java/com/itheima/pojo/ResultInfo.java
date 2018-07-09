@@ -44,7 +44,7 @@ public class ResultInfo {
         this.errorMsg = errorMsg;
     }
 
-    public ResultInfo() {
+    public ResultInfo(boolean b) {
 
     }
 

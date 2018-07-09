@@ -10,6 +10,7 @@ import com.itheima.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +28,14 @@ import java.util.List;
 public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
+
     @Override
     public List<Category> findAllCategory() throws IOException {
         //定义返回的json
         String jsonData = null;
         //如果jedis访问不了，会发生异常
         Jedis jedis = null;
-
+        //
         ObjectMapper mapper = new ObjectMapper();
         try {
             //1.从redis缓存数据库取

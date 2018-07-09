@@ -1,6 +1,7 @@
 package com.itheima.Mapper;
 
 import com.itheima.pojo.Route;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,11 +20,22 @@ public interface RouteMapper {
      * 人气旅游路线
      * @return
      */
-    public List<Route> getPopularityRouteList();
+     List<Route> getPopularityRouteList();
 
     //最新线路旅游
-    public List<Route> getNewestRouteList();
+     List<Route> getNewestRouteList();
 
     //最新主题旅游
-    public List<Route> getThemeRouteList();
+     List<Route> getThemeRouteList();
+
+    //分页获取国内游线路列表数据
+     List<Route> findRouteListByPage(@Param("cid") int cid, @Param("curPage") int curPage,@Param("pageSize") int pageSize,@Param("rname") String rname);
+    //获取指定分类的总记录数
+    int getCountByCid(@Param("cid") int cid,@Param("rname") String rname);
+    //获取分页类
+    List<Route> findRouteListByCidAndRname(@Param("cid") int cid,@Param("rname") String rname);
+
+    Route findRouteByRid(@Param("rid") String rid);
+
+    void updateCountByRid(@Param("rid") int rid);
 }
