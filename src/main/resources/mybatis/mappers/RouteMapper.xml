@@ -22,8 +22,6 @@
         SELECT * FROM tab_route WHERE rflag='1' and cid=#{cid}
         <if test="rname!=null and !''.equals(rname)">and rname like '%' #{rname} '%'</if>
     </select>
-
-
     <resultMap id="routeResult" type="Route" autoMapping="true">
         <id property="rid" column="rid"></id>
         <association property="category" autoMapping="true" javaType="Category">
